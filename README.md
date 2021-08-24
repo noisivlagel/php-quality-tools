@@ -1,20 +1,68 @@
-# Introduction 
-TODO: Give a short introduction of your project. Let this section explain the objectives or the motivation behind this project. 
+# noisivlagel coding standard
 
-# Getting Started
-TODO: Guide users through getting your code up and running on their own system. In this section you can talk about:
-1.	Installation process
-2.	Software dependencies
-3.	Latest releases
-4.	API references
+## Table of contents
 
-# Build and Test
-TODO: Describe and show how to build your code and run the tests. 
+- [Requirements](#requirements)
+- [How to install](#how-to-install)
+    - [Enabling the rules](#enabling-the-rules)
+    - [Sniffing code](#sniffing-code)
+    - [Sniffing code in PHPStorm](#sniffing-code-in-phpstorm)
+- [Change log](#change-log)
 
-# Contribute
-TODO: Explain how other users and developers can contribute to make your code better. 
 
-If you want to learn more about creating good readme files then refer the following [guidelines](https://docs.microsoft.com/en-us/azure/devops/repos/git/create-a-readme?view=azure-devops). You can also seek inspiration from the below readme files:
-- [ASP.NET Core](https://github.com/aspnet/Home)
-- [Visual Studio Code](https://github.com/Microsoft/vscode)
-- [Chakra Core](https://github.com/Microsoft/ChakraCore)
+
+## Requirements
+
+- [squizlabs/php_codesniffer](https://github.com/squizlabs/PHP_CodeSniffer) 3.6 or higher
+
+## How to install
+
+```bash
+composer require noisivlagel/quality-tools --dev
+```
+
+## How to use
+
+### Enabling the rules
+
+Add it to your project `phpcs.xml` or `phpcs.xml.dist` ruleset:
+
+```xml
+<?xml version="1.0"?>
+<ruleset>
+    <arg name="basepath" value="."/>
+
+    <file>./src</file>
+    <file>./tests</file>
+
+    <rule ref="./vendor/noisivlagel/quality-tools/ruleset.xml"/>
+</ruleset>
+```
+
+### Sniffing code
+
+The following commands can be added to the `scripts` section of your `composer.json` file to check and fix invalid code. Some optional checks are also included to illustrate how they might work together to check all your code.
+
+```json
+{
+    "scripts": {
+        "composer-validate": "@composer validate --no-check-all --strict",
+        "codesniffer-check": "vendor/bin/phpcs --runtime-set ignore_errors_on_exit 1 --runtime-set ignore_warnings_on_exit 1",
+        "codesniffer-fix": "vendor/bin/phpcbf --runtime-set ignore_errors_on_exit 1 --runtime-set ignore_warnings_on_exit 1 || exit 0",
+        "test": "vendor/bin/phpunit",
+        "check": [
+            "@composer-validate",
+            "@codesniffer-check",
+            "@test"
+        ]
+    }
+}
+```
+
+### Sniffing code in PHPStorm
+
+See [PHP Code Sniffer in PhpStorm](https://confluence.jetbrains.com/display/PhpStorm/PHP+Code+Sniffer+in+PhpStorm) on how to set up CodeSniffer in PHPStorm.
+
+## Change log
+
+Please see [CHANGELOG](CHANGELOG.md) for more information what has changed recently.
