@@ -59,6 +59,15 @@ The following commands can be added to the `scripts` section of your `composer.j
 }
 ```
 
+## GrumPHP
+
+Grumphp is a tool that can add a pre-commit hook to test different rules :
+https://github.com/phpro/grumphp
+
+We check for : 
+- git conventional commit (https://www.conventionalcommits.org/en/v1.0.0/#specification)
+- phpCodeSniffer ruleset.
+
 ### Sniffing code in PHPStorm
 
 See [PHP Code Sniffer in PhpStorm](https://confluence.jetbrains.com/display/PhpStorm/PHP+Code+Sniffer+in+PhpStorm) on how to set up CodeSniffer in PHPStorm.

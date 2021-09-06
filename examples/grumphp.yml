@@ -1,0 +1,55 @@
+grumphp:
+  git_hook_variables:
+    EXEC_GRUMPHP_COMMAND: docker-compose -f docker/docker-compose.yaml -f docker/docker-compose.override.yaml exec -T php
+  ascii:
+    failed: ~ #resource/grumphp-grumpy.txt
+    succeeded: ~ #resource/grumphp-happy.txt
+  fixer:
+    enabled: false
+    fix_by_default: false
+  tasks:
+    composer: ~
+    git_commit_message:
+      allow_empty_message: false
+      enforce_single_lined_subject: true
+      enforce_capitalized_subject: false
+
+      type_scope_conventions:
+        - types:
+            - build
+            - ci
+            - chore
+            - docs
+            - feat
+            - fix
+            - perf
+            - refacto
+            - revert
+            - style
+            - test
+        - scopes:
+            - db
+            - front
+            - back
+            - gui
+            - api
+            - docker
+            - e2e
+      max_subject_width: 80
+    phpcs:
+      standard: 'phpcs.xml'
+      #psalm:
+      #config: psalm.xml
+      #ignore_patterns: [ ]
+      #no_cache: false
+      #report: ~
+      #output_format: null
+      #threads: 1
+      #triggered_by: [ 'php' ]
+      #show_info: false
+      #phpmnd:
+      #whitelist_patterns:
+      #- tests
+      #exclude:
+      #- ./vendor/*
+      #- ./public/*
