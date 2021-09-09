@@ -1,6 +1,6 @@
 grumphp:
   git_hook_variables:
-    EXEC_GRUMPHP_COMMAND: docker-compose -f docker/docker-compose.yaml -f docker/docker-compose.override.yaml exec -T php
+    EXEC_GRUMPHP_COMMAND: docker-compose exec -T php
   ascii:
     failed: ~ #resource/grumphp-grumpy.txt
     succeeded: ~ #resource/grumphp-happy.txt
