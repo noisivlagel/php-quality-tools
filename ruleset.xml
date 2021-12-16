@@ -14,7 +14,9 @@
     <!--Rulesets-->
     <rule ref="PSR1"/>
     <rule ref="PSR2"/>
-    <rule ref="PSR12"/>
+    <rule ref="PSR12">
+        <exclude name="PSR12.Files.FileHeader" />
+    </rule>
 
     <include-pattern>*\.php$</include-pattern>
 

@@ -11,3 +11,10 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 ### Added
 
 - Added initial ruleset
+
+
+## 0.2.0 (2021-12-22)
+
+### Added
+
+- Exclude Rule PSR12.Files.FileHeader
